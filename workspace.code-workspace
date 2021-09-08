@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "../../my_projects/conextrategias"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "conextrategias"
+	}
+}
