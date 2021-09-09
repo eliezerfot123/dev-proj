@@ -1,6 +1,40 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-
-<h1>PruebA</h1>
+    {% include 'content/nav.html' %}
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/google-my-activity.jpg'%}" width="20" class="card-img-top">
+                    <div class="card-body">
+                      <center><a href="#" class="btn btn-primary">Consultar deposito</a></center>
+                    </div>
+                  </div>                
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/icono-documentos1.png'%}" width="20" class="card-img-top">
+                    <div class="card-body">
+                      
+                      <center>
+                        <a href="#" class="btn btn-primary">Realizar Solicitud</a>
+                      </center>
+                    </div>
+                  </div>                
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/1509659.png'%}" class="card-img-top">
+                    <div class="card-body">
+                      
+                      <center>
+                        <a href="#" class="btn btn-primary">Consultar Indicadores</a>
+                      </center>
+                    </div>
+                  </div>                
+            </div>
+        </div>
+    </div>
 {% endblock content %}
