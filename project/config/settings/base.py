@@ -48,10 +48,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY = [
     'compressor',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
-
+    'apps.landing',
+    'apps.deposit',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + LOCAL_APPS

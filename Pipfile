@@ -11,6 +11,8 @@ django-environ = "*"
 psycopg2 = "*"
 django-compress = "*"
 django-compressor = "*"
+pillow = "*"
+ipdb = "*"
 
 [dev-packages]
 
