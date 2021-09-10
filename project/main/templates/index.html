@@ -1,40 +1,106 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    {% include 'content/nav.html' %}
-    <br><br>
-    <div class="container">
+{% include 'content/nav.html' %}
+<br><br>
+<div class="container">
+    <center>
         <div class="row">
             <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'images/google-my-activity.jpg'%}" width="20" class="card-img-top">
-                    <div class="card-body">
-                      <center><a href="#" class="btn btn-primary">Consultar deposito</a></center>
+                <div class="card">
+                    <br>
+                    <h5 class="modal-title" id="exampleModalLabel">Consultar Deposito</h5>
+                    <br>
+                    <form role="search" method="POST" class="search-form" action="{% url 'index' %}">
+                        <div class="card-body">
+                            {% csrf_token %}	
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">RUT:</label>
+                                        <input name="rut" id="rut" type="text" class="form-control" placeholder="Por favor ingrese su RUT" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="fecha" id="fecha" type="date" id="datepicker" />
+                                    </div>
+                                    <div class="container">
+                                        <div id="output"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                            <br>
+                            <center>
+                                <button type="submit" class="btn btn-primary">Consultar</button>
+                            </center>
+                    </form>
                     </div>
-                  </div>                
+                </div>
             </div>
             <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img src="{% static 'images/icono-documentos1.png'%}" width="20" class="card-img-top">
                     <div class="card-body">
-                      
-                      <center>
-                        <a href="#" class="btn btn-primary">Realizar Solicitud</a>
-                      </center>
+                        <center>
+                            <a href="#" class="btn btn-primary">Realizar Solicitud</a>
+                        </center>
                     </div>
-                  </div>                
+                </div>
             </div>
             <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img src="{% static 'images/1509659.png'%}" class="card-img-top">
                     <div class="card-body">
-                      
-                      <center>
-                        <a href="#" class="btn btn-primary">Consultar Indicadores</a>
-                      </center>
+                        <center>
+                            <a href="#" class="btn btn-primary">Consultar Indicadores</a>
+                        </center>
                     </div>
-                  </div>                
+                </div>
             </div>
         </div>
+    </center>
+</div>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% if search %}
+            <div id="output">
+                <h5>Consulta</h5>
+                <hr>
+                <ul class="list-group">
+                    {% for search in search %}
+                    <li id="storage" class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ search.product }}
+                        <span class="badge badge-primary badge-pill">{{ search.amount }}</span>
+                    </li>
+                    {% endfor%}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
     </div>
+</div>
 {% endblock content %}
+{% block extrajs %} 
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+    });
+    
+    
+    
+</script>
+{% endblock extrajs %}
+<center>
+    <a href="#" class="btn btn-primary">Consultar Indicadores</a>
+</center>
